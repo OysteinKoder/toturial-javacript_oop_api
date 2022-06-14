@@ -1,3 +1,5 @@
+const catFactOne = document.getElementById("catFactOne");
+
 function NewCharacter(role, health, armor, dps) {
   this.role = role;
   this.health = health;
@@ -16,4 +18,8 @@ secondCharacter.logCharacter();
 
 fetch("https://catfact.ninja/facts")
   .then((res) => res.json())
-  .then((data) => console.log(data.data));
+  .then((data) => {
+    const catFactsData = data.data;
+    console.log(catFactsData);
+    catFactOne.innerHTML = catFactsData[2].fact;
+  });
